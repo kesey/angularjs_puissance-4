@@ -1,5 +1,7 @@
 # puissance-4
-réalisation d'un puissance 4 à l'aide d'angular.js 
+réalisation d'un puissance 4 à l'aide d'angular.js
+
+Attention pas de server
 
 #### enoncé:
 Puissance 4 est un jeu de stratégie combinatoire abstrait se jouant à 2.

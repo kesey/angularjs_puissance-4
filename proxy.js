@@ -17,7 +17,7 @@ app
         next();
     })
 
-    .get('/LogOn/:name',function(req, res){ // route demandée par l'application client pour se logger
+    .get('/LogOn/:name',function(req, res){ // route demandï¿½e par l'application client pour se logger
         var params = req.params;
         unirest
             .get(IIS_SERVICE + "/LogOn?name=" + params.name) // route vers l'API REST pour se logger
@@ -27,7 +27,7 @@ app
             });
     })
 
-    .get('/GetGameList/:name/:token',function(req, res){ // route demandée par l'application client pour avoir la liste des parties
+    .get('/GetGameList/:name/:token',function(req, res){ // route demandï¿½e par l'application client pour avoir la liste des parties
         var params = req.params;
         unirest
             .get(IIS_SERVICE + "/GetGameList?name=" + params.name + "&token=" + params.token) // route vers l'API REST pour avoir la liste des parties
@@ -37,10 +37,10 @@ app
             });
     })
 
-    .get('/CreateGame/:name/:token',function(req, res){ // route demandée par l'application client pour créer une nouvelle partie
+    .get('/CreateGame/:name/:token',function(req, res){ // route demandï¿½e par l'application client pour crï¿½er une nouvelle partie
         var params = req.params;
         unirest
-            .get(IIS_SERVICE + "/CreateGame?name=" + params.name + "&token=" + params.token) // route vers l'API REST pour créer une nouvelle partie
+            .get(IIS_SERVICE + "/CreateGame?name=" + params.name + "&token=" + params.token) // route vers l'API REST pour crï¿½er une nouvelle partie
             .header('Accept', 'application/json')
             .end(function(response){
                 var idGame = JSON.stringify(response.body);
@@ -48,7 +48,7 @@ app
             });
     })
 
-    .get('/JoinGame/:name/:token/:idGame',function(req, res){ // route demandée par l'application client pour rejoindre une partie
+    .get('/JoinGame/:name/:token/:idGame',function(req, res){ // route demandï¿½e par l'application client pour rejoindre une partie
         var params = req.params;
         unirest
             .get(IIS_SERVICE + "/JoinGame?name=" + params.name + "&token=" + params.token + "&gameId=" + params.idGame) // route vers l'API REST pour rejoindre une partie
@@ -58,7 +58,7 @@ app
             });
     })
 
-    .get('/GetGameData/:name/:token/:idGame',function(req, res){ // route demandée par l'application client pour avoir la grille de jeux
+    .get('/GetGameData/:name/:token/:idGame',function(req, res){ // route demandï¿½e par l'application client pour avoir la grille de jeux
         var params = req.params;
         unirest
             .get(IIS_SERVICE + "/GetGameData?name=" + params.name + "&token=" + params.token + "&gameId=" + params.idGame) // route vers l'API REST pour avoir la grille de jeux
@@ -69,7 +69,7 @@ app
             });
     })
 
-    .get('/GetGameSynopsis/:name/:token/:idGame',function(req, res){ // route demandée par l'application client pour avoir le synopsis de la partie
+    .get('/GetGameSynopsis/:name/:token/:idGame',function(req, res){ // route demandï¿½e par l'application client pour avoir le synopsis de la partie
         var params = req.params;
         unirest
             .get(IIS_SERVICE + "/GetGameSynopsis?name=" + params.name + "&token=" + params.token + "&gameId=" + params.idGame) // route vers l'API REST pour avoir le synopsis de la partie
@@ -79,7 +79,7 @@ app
             });
     })
 
-    .get('/GetNotification/:name/:token/:idGame',function(req, res){ // route demandée par l'application client pour avoir les notifications
+    .get('/GetNotification/:name/:token/:idGame',function(req, res){ // route demandï¿½e par l'application client pour avoir les notifications
         var params = req.params;
         unirest
             .get(IIS_SERVICE + "/GetNotification?name=" + params.name + "&token=" + params.token + "&gameId=" + params.idGame) // route vers l'API REST pour avoir les notifications
@@ -89,7 +89,7 @@ app
             });
     })
 
-    .get('/Play/:name/:token/:idGame/:position',function(req, res){ // route demandée par l'application client pour jouer un pion dans une colonne
+    .get('/Play/:name/:token/:idGame/:position',function(req, res){ // route demandï¿½e par l'application client pour jouer un pion dans une colonne
         var params = req.params;
         unirest
             .get(IIS_SERVICE + "/Play?name=" + params.name + "&token=" + params.token + "&gameId=" + params.idGame + "&position=" + params.position) // route vers l'API REST pour jouer un pion dans une colonne
@@ -99,7 +99,7 @@ app
             });
     })
 
-    .get('/LeaveGame/:name/:token/:idGame',function(req, res){ // route demandée par l'application client pour quitter une partie
+    .get('/LeaveGame/:name/:token/:idGame',function(req, res){ // route demandï¿½e par l'application client pour quitter une partie
         var params = req.params;
         unirest
             .get(IIS_SERVICE + "/LeaveGame?name=" + params.name + "&token=" + params.token + "&gameId=" + params.idGame) // route vers l'API REST pour quitter une partie
@@ -109,10 +109,10 @@ app
             });
     })
 
-    .get('/PushMessage/:name/:token/:idGame/:message',function(req, res){ // route demandée par l'application client pour quitter une partie
+    .get('/PushMessage/:name/:token/:idGame/:message',function(req, res){ // route demandï¿½e par l'application client pour quitter une partie
         var params = req.params;
         unirest
-            .get(IIS_SERVICE + "/PushMessage?name=" + params.name + "&token=" + params.token + "&gameId=" + params.idGame + "&message=" + params.message) // route vers l'API REST pour envoyer un message à son adversaire
+            .get(IIS_SERVICE + "/PushMessage?name=" + params.name + "&token=" + params.token + "&gameId=" + params.idGame + "&message=" + params.message) // route vers l'API REST pour envoyer un message ï¿½ son adversaire
             .header('Accept', 'application/json')
             .end(function(response){
                 res.send(response.body);
