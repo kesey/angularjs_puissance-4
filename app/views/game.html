@@ -1,0 +1,68 @@
+<div class="wrapGame">
+<!-------------------------------------------------------------------------infos---------------------------------------------------------------------->
+    <div class="infos">
+        <div>
+            <h2 class="font-effect-fire-animation orbitron nomJoueur">{{nomPlayer}}</h2>
+            <h3 class="orbitron vs">VS</h3>
+            <h2 class="font-effect-fire-animation orbitron vs">{{advName}}</h2>
+<!-------------------------------------------------------------------------score---------------------------------------------------------------------->
+            </br>
+            <h3 class="orbitron nomJoueur">{{playerScore}}</h3>
+            <h3 class="orbitron vs">-</h3>
+            <h3 class="orbitron vs">{{advScore}}</h3>
+        </div>
+<!-------------------------------------------------------------------------etat de la partie---------------------------------------------------------->
+        <h4 class="orbitron">{{state}}</h4>
+        </br>
+<!-------------------------------------------------------------------------timer joueur--------------------------------------------------------------->
+        <div>
+            <h4 class="orbitron">Temps de jeu:</h4>
+            <span class="orbitron">{{chronoPlayer.heures}} H :</span>
+            <span class="orbitron">{{chronoPlayer.minutes}} Min :</span>
+            <span class="orbitron">{{chronoPlayer.secondes}} Sec</span>
+        </div>
+        </br>
+<!-------------------------------------------------------------------------boutons quitter, rejouer partie-------------------------------------------->
+        <input type="button" class="btn btn-default" value="Quitter" ng-click="quitterPartie()"/>
+        <input type="button" class="btn btn-default" value="Rejouer" ng-if="endGame" ng-click="rejouerPartie()"/>
+<!-------------------------------------------------------------------------messages de relance de partie---------------------------------------------->
+        <h4 ng-if="waitingFor" class="orbitron">{{waitingFor}}</h4>
+        <h4 ng-if="replayGame" class="orbitron alert alert-dismissible alert-warning">{{replayGame}}</h4>
+<!-------------------------------------------------------------------------notifications-------------------------------------------------------------->
+        <ul ng-show="notifications">
+            <li ng-repeat="notification in notifications">
+                <h4 ng-if="notification.PlayerJoin" class="orbitron alert alert-dismissible alert-warning">{{notification.PlayerName}} rejoint la partie</h4>
+                <h4 ng-if="notification.PlayerLeave" class="orbitron alert alert-dismissible alert-warning">{{notification.PlayerName}} quitte la partie</h4>
+            </li>
+        </ul>
+    </div>
+<!-------------------------------------------------------------------------table de jeux-------------------------------------------------------------->
+    <div class="wrapBoard">
+        <table class="table-responsive plancheJeux">
+            <tfoot>
+                <tr>
+                    <td ng-repeat="colonne in colonnes" ng-init="col = $index+1" class="font-effect-emboss">{{col}}</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-repeat="ligne in board"  ng-init="numLigne = $index">
+                    <td ng-repeat="colonne in colonnes" ng-init="numCol = $index" ng-click="jouerPiece(numCol)" ng-switch="ligne[numCol]">
+                        <div ng-switch-when="0" class="cercle"></div>
+                        <img src="./images/Bender.jpg" alt="pion bender" ng-class="{'anim': animOk === 'L'+numLigne+'C'+numCol,'winComb': showWin.indexOf('L'+numLigne+'C'+numCol) != -1}" ng-switch-when="1" class="pion"/>
+                        <img src="./images/Bob.jpg" alt="pion bob" ng-class="{'anim': animOk === 'L'+numLigne+'C'+numCol,'winComb': showWin.indexOf('L'+numLigne+'C'+numCol) != -1}" ng-switch-when="2" class="pion"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="baseJeux"></div>
+    </div>
+<!-------------------------------------------------------------------------timer général-------------------------------------------------------------->
+    <div class="timer">
+        <h3 class="orbitron">Dur&eacute;e de la partie:</h3>
+        <span class="orbitron">{{chrono.heures}} H :</span>
+        <span class="orbitron">{{chrono.minutes}} Min :</span>
+        <span class="orbitron">{{chrono.secondes}} Sec</span>
+    </div>
+</div>
+
+

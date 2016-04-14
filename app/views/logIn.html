@@ -1,0 +1,27 @@
+<div class="logIn">
+<!-----------------------------------------------------------------------Authentification--------------------------------------------------------------->
+    <form name="logForm" ng-submit="log(name)" novalidate>
+        <label for="fieldName">
+            <h3 class="orbitron">Authentification:</h3>
+        </label>
+        <input type="text" id="fieldName" class="form-control marge" name="identifiant" placeholder="identifiant" ng-model="name" required/>
+        <input type="submit" class="marge btn btn-default" value="Commencer" ng-disabled="logForm.$invalid"/>
+    </form>
+<!-----------------------------------------------------------------------Messages erreurs--------------------------------------------------------------->
+    <div class="alert alert-dismissible alert-danger marge form-control" ng-show="logForm.identifiant.$dirty && logForm.identifiant.$error.required">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        Veuillez renseigner un nom
+    </div>
+    <div class="alert alert-dismissible alert-danger marge" ng-if="alreadyLog">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        Vous &ecirc;tes d&eacute;j&agrave; authentifi&eacute;
+    </div>
+    <div class="alert alert-dismissible alert-danger marge form-control" ng-if="errLogIn">
+        <button class="close" data-dismiss="alert" type="button">×</button>
+        Serveur injoignable
+    </div>
+</div>
+
+
+
+

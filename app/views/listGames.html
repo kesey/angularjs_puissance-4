@@ -1,0 +1,39 @@
+<div class="welcome">
+    <h1 class="orbitron">
+        Bonjour {{nomPlayer}}
+    </h1>
+    <input type="button" class="btn btn-default" value="creer une partie" ng-click="newGame()"/>
+    <input type="button" class="btn btn-default" value="authentification" ng-click="returnToLog()"/>
+    <hr>
+<!---------------------------------------------------------------------------------------Liste des parties---------------------------------------------------------------------------->
+    <div ng-if="gameList[0]">
+        <h3 class="orbitron">Choisis ta partie:</h3>
+        <table class="table table-striped table-hover listGamesTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>joueur 1</th>
+                    <th>joueur 2</th>
+                    <th>&eacute;tat de la partie</th>
+                    <th>rejoindre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="game in gameList" ng-class="{warning: $odd}">
+                    <td>{{game.GameId}}</td>
+                    <td>{{game.PlayerOne}}</td>
+                    <td>{{game.PlayerTwo}}</td>
+                    <td>{{game.State}}</td>
+                <td>
+                    <span ng-hide="game.State != 'Waiting For Player'">
+                        <input type="button" ng-class="{'btn btn-default play': $odd,'btn btn-warning play': $even}" value="jouer" ng-click="playGame(game.GameId)"/>
+                    </span>
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<!-----------------------------------------------------------------------------------------Recherche infos---------------------------------------------------------------------------->
+    <div ng-if="statutList">{{statutList}}</div>
+</div>
+<!--ng-hide="game.State != 'Waiting For Player' || game.State != 'Game in progress'"-->
